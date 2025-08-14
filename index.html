@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Spark Installations — LED Retrofits • Low Voltage • Fixture Swaps</title>
+  <meta name="description" content="LED retrofits, ballast & driver replacements, fixture swaps, and low‑voltage installations for businesses and homes across the Salt Lake Valley." />
+  <meta name="keywords" content="LED retrofit, ballast replacement, driver replacement, fixture swap, low voltage, data cabling, cable pulls, PoE, CCTV, Utah, Salt Lake Valley, bucket truck" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220; /* slate-950-ish */
+      --bg-soft:#0f172a; /* slate-900 */
+      --bg-elev:#111827; /* gray-900 */
+      --text:#e5e7eb; /* gray-200 */
+      --muted:#94a3b8; /* slate-400 */
+      --brand:#22d3ee; /* cyan-400 */
+      --accent:#38bdf8; /* sky-400 */
+      --ok:#22c55e; /* green-500 */
+      --warn:#f59e0b; /* amber-500 */
+      --err:#ef4444; /* red-500 */
+      --card:#0b1220;
+      --ring: rgba(56,189,248,.45);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f8fafc; /* slate-50 */
+        --bg-soft:#ffffff;
+        --bg-elev:#ffffff;
+        --text:#0f172a;
+        --muted:#475569;
+        --card:#ffffff;
+        --ring: rgba(2,132,199,.25);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--text); background:linear-gradient(180deg,var(--bg) 0%, var(--bg-soft) 100%);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px; margin-inline:auto; padding:24px}
+    header{position:sticky; top:0; backdrop-filter:saturate(1.1) blur(10px); background:color-mix(in oklab, var(--bg-soft) 86%, transparent); border-bottom:1px solid color-mix(in oklab, var(--muted) 30%, transparent); z-index:40}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .logo{width:36px; height:36px; border-radius:12px; background: radial-gradient(80% 80% at 25% 25%, var(--brand), var(--accent)); box-shadow:0 10px 30px color-mix(in oklab, var(--brand) 30%, transparent)}
+    .chip{padding:4px 10px; border-radius:999px; background:color-mix(in oklab, var(--brand) 18%, transparent); color:var(--text); border:1px solid color-mix(in oklab, var(--brand) 35%, transparent); font-size:12px}
+    nav a{margin-left:14px; font-weight:600}
+    .hero{padding:72px 0 32px}
+    .hero h1{font-size: clamp(28px, 4vw, 48px); line-height:1.05; margin:0 0 12px}
+    .hero p{font-size: clamp(16px, 2.5vw, 20px); color:var(--muted); margin:0 0 18px}
+    .cta-row{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid color-mix(in oklab, var(--accent) 35%, transparent); background:color-mix(in oklab, var(--accent) 18%, transparent); color:var(--text); font-weight:700}
+    .btn.secondary{background:transparent; border-color:color-mix(in oklab, var(--muted) 35%, transparent); color:var(--text)}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    section{padding:48px 0; scroll-margin-top:84px}
+    .card{background:var(--card); border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); border-radius:18px; padding:18px; box-shadow:0 10px 28px rgba(0,0,0,.15)}
+    h2{font-size: clamp(22px, 3.2vw, 30px); margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .kpis{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+    .k{padding:14px; border-radius:16px; background:linear-gradient(180deg, color-mix(in oklab, var(--brand) 14%, transparent), transparent); border:1px solid color-mix(in oklab, var(--brand) 35%, transparent)}
+    .k .v{font-size:24px; font-weight:800}
+    .services{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+    .svc{padding:14px; border-radius:16px; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)}
+    .svc h3{margin:0 0 6px; font-size:18px}
+    .list{margin:0; padding-left:18px}
+    .estimator .row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+    .input, select, textarea{width:100%; padding:12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted) 30%, transparent); background:var(--bg-elev); color:var(--text)}
+    .input:focus, select:focus, textarea:focus{outline:2px solid var(--ring); border-color:transparent}
+    .table{width:100%; border-collapse:collapse; margin-top:10px}
+    .table th, .table td{border-bottom:1px dashed color-mix(in oklab, var(--muted) 30%, transparent); padding:10px 6px; text-align:left}
+    .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:color-mix(in oklab, var(--brand) 22%, transparent); border:1px solid color-mix(in oklab, var(--brand) 40%, transparent); font-size:12px}
+    footer{padding:28px 0; color:var(--muted); border-top:1px solid color-mix(in oklab, var(--muted) 25%, transparent)}
+    .hide{display:none}
+    @media (max-width:880px){
+      .services{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr 1fr}
+      .estimator .row{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Smart Spark Installations",
+    "description": "LED retrofits, ballast & driver replacements, fixture swaps, low‑voltage installations, and cable pulls across the Salt Lake Valley.",
+    "areaServed": "Salt Lake Valley, Utah",
+    "url": "https://smartsparkinstallations.example",
+    "telephone": "+1-###-###-####",
+    "email": "contact@smartsparkinstallations.example",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> Smart Spark Installations</div>
+      <nav aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#estimator">Estimator</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="chip" href="#contact">Book a job</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="grid">
+        <div style="grid-column: span 7">
+          <h1>Lighting & Low‑Voltage Pros for the Salt Lake Valley</h1>
+          <p>We specialize in <strong>LED retrofits</strong>, <strong>ballast & driver replacements</strong>, <strong>fixture swaps</strong>, and <strong>low‑voltage installs</strong> (data cabling, PoE, CCTV). Commercial & residential. Flexible scheduling, clean work, straight‑up pricing.</p>
+          <div class="cta-row">
+            <a class="btn" href="#estimator">Quick Estimator</a>
+            <a class="btn secondary" href="#contact">Text or Email Us</a>
+          </div>
+          <div style="margin-top:18px" class="muted">Utah‑based • Apprentice electrician for electrical tasks • Bucket‑truck capable sites supported (by arrangement)</div>
+        </div>
+        <div style="grid-column: span 5">
+          <div class="card">
+            <div class="kpis">
+              <div class="k">
+                <div class="v">$45/hr</div>
+                <div class="muted">Labor (Apprentice)</div>
+              </div>
+              <div class="k">
+                <div class="v">+175%</div>
+                <div class="muted">Parts markup (typical)</div>
+              </div>
+              <div class="k">
+                <div class="v">SLC Valley</div>
+                <div class="muted">No drive fee in‑valley</div>
+              </div>
+            </div>
+            <p class="muted" style="margin:10px 0 0">Outside valley: drive time billed at <strong>¼ hourly rate</strong> + <strong>$0.52/mi</strong>. Bucket truck rental/operation priced per job.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="container">
+      <h2>Services</h2>
+      <p class="muted">Core work we handle day‑to‑day. If it’s not here, ask — we’ll tell you straight if it’s in scope.</p>
+      <div class="services">
+        <div class="svc">
+          <h3>LED Retrofits</h3>
+          <ul class="list">
+            <li>Fluorescent to LED upgrades</li>
+            <li>Tubes, panels, high‑bay, can lights</li>
+            <li>Energy savings & brighter, cleaner light</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <h3>Ballast & Driver Replacements</h3>
+          <ul class="list">
+            <li>Troubleshoot flicker/no‑start</li>
+            <li>Replace failed ballasts and LED drivers</li>
+            <li>Fixture testing & documentation</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <h3>Fixture Swaps</h3>
+          <ul class="list">
+            <li>Interior & exterior fixtures</li>
+            <li>Parking lots / poles (bucket‑truck capable)</li>
+            <li>Smart switches & dimmers</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <h3>Low‑Voltage & Data</h3>
+          <ul class="list">
+            <li>Structured cabling & cable pulls</li>
+            <li>PoE devices, APs, cameras (CCTV)</li>
+            <li>Terminations, testing, labeling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="estimator" class="container estimator">
+      <h2>Quick Estimator <span class="pill">ballpark</span></h2>
+      <p class="muted">This is a <em>rough</em> estimate. We’ll confirm with photos or a quick site check.</p>
+      <div class="card">
+        <div class="row">
+          <label>
+            <div>Service Type</div>
+            <select id="svcType">
+              <option value="retrofit">LED Retrofit</option>
+              <option value="ballast">Ballast/Driver Replacement</option>
+              <option value="fixture">Fixture Swap</option>
+              <option value="lowvolt">Low‑Voltage / Cable Pull</option>
+            </select>
+          </label>
+          <label>
+            <div>Quantity (fixtures/runs)</div>
+            <input class="input" id="qty" type="number" min="1" value="10" />
+          </label>
+          <label>
+            <div>Estimated Labor Hours</div>
+            <input class="input" id="hours" type="number" min="0" step="0.5" value="4" />
+          </label>
+          <label>
+            <div>Material Cost (our cost)</div>
+            <input class="input" id="materials" type="number" min="0" step="0.01" value="250" />
+          </label>
+          <label>
+            <div>Outside Salt Lake Valley?</div>
+            <select id="outside">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </label>
+          <label>
+            <div>Round‑trip Miles (if outside)</div>
+            <input class="input" id="miles" type="number" min="0" value="0" />
+          </label>
+        </div>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn" id="calc">Calculate</button>
+          <button class="btn secondary" id="reset">Reset</button>
+        </div>
+        <table class="table" aria-live="polite" style="margin-top:12px">
+          <tbody id="tbl"></tbody>
+        </table>
+        <div class="muted" id="est-note"></div>
+      </div>
+    </section>
+
+    <section id="coverage" class="container">
+      <h2>Coverage & Scheduling</h2>
+      <div class="grid">
+        <div class="card" style="grid-column: span 7">
+          <p><strong>Primary coverage:</strong> Salt Lake Valley (no drive fee). <strong>By request:</strong> Utah County, Davis/Weber, Tooele, Summit, Box Elder and beyond (drive time & mileage apply).</p>
+          <p>We work long days too — so we offer early/late windows and weekend slots when needed.</p>
+          <ul class="list">
+            <li>Outside‑valley drive time billed at <strong>¼ × $45/hr</strong></li>
+            <li>Mileage at <strong>$0.52/mi</strong></li>
+            <li>Bucket‑truck pricing quoted case‑by‑case</li>
+          </ul>
+        </div>
+        <div class="card" style="grid-column: span 5">
+          <h3 style="margin-top:0">Request a time window</h3>
+          <p class="muted">Prefer a slot? Tell us your windows in the form below. We’ll confirm by text/email.</p>
+          <p class="muted">If you already use Google Calendar Appointment Schedules, drop the link — we’ll sync.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <div class="grid">
+        <div class="card" style="grid-column: span 7">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hide"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+            <div class="row">
+              <label>
+                <div>Your Name</div>
+                <input class="input" type="text" name="name" required />
+              </label>
+              <label>
+                <div>Email</div>
+                <input class="input" type="email" name="email" required />
+              </label>
+              <label>
+                <div>Phone</div>
+                <input class="input" type="tel" name="phone" />
+              </label>
+              <label>
+                <div>Preferred Time Window</div>
+                <input class="input" type="text" name="window" placeholder="e.g., Weeknights after 6pm" />
+              </label>
+            </div>
+            <label>
+              <div>Project Details</div>
+              <textarea name="message" rows="5" placeholder="What’s the issue? # of fixtures? Ceiling height? Any photos? (paste links)" required></textarea>
+            </label>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <button class="btn" type="submit">Send Message</button>
+              <a class="btn secondary" id="smsLink" href="sms:+1XXXXXXXXXX?&body=Hi%20Smart%20Spark%2C%20I%27d%20like%20a%20quote%20for...">Text Us</a>
+              <a class="btn secondary" id="emailLink" href="mailto:contact@smartsparkinstallations.example?subject=Quote%20Request&body=Hi%20Smart%20Spark%2C%20project%20details%3A">Email Us</a>
+            </div>
+            <p class="muted" style="margin-top:8px">Submitting the form pings us instantly via Netlify. We typically reply the same day.</p>
+          </form>
+        </div>
+        <div class="card" style="grid-column: span 5">
+          <h3 style="margin-top:0">Fast photo checklist</h3>
+          <ul class="list">
+            <li>Wide shot of the area</li>
+            <li>Close‑up of labels (ballast/driver)</li>
+            <li>Ceiling/fixture height estimate</li>
+            <li>Quantity & access notes (ladders/lifts)</li>
+          </ul>
+          <p class="muted">Share via the form, text, or email — whatever’s easiest.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="y"></span> Smart Spark Installations • Salt Lake Valley, Utah</div>
+      <div class="muted">Apprentice electrician for electrical tasks; low‑voltage installs offered. Some projects may require scheduling with a supervising journeyman. Straightforward communication — if it’s not in scope, we’ll say so.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Estimator
+    const rate = 45; // $/hr
+    const markup = 1.75; // 175%
+    const mileage = 0.52; // $/mi
+    const driveFraction = 0.25; // 1/4 hourly for drive
+
+    function currency(v){
+      return v.toLocaleString(undefined,{style:'currency', currency:'USD'});
+    }
+
+    function calcEstimate(){
+      const svc = document.getElementById('svcType').value;
+      const qty = Math.max(1, Number(document.getElementById('qty').value||0));
+      const hours = Math.max(0, Number(document.getElementById('hours').value||0));
+      const materials = Math.max(0, Number(document.getElementById('materials').value||0));
+      const outside = document.getElementById('outside').value === 'yes';
+      const miles = Math.max(0, Number(document.getElementById('miles').value||0));
+
+      // Heuristics per service for setup/overhead
+      const basePerJob = { retrofit: 0.5, ballast: 0.4, fixture: 0.4, lowvolt: 0.5 }[svc] || 0.5; // hours
+      const perUnit = { retrofit: 0.25, ballast: 0.2, fixture: 0.25, lowvolt: 0.35 }[svc] || 0.25; // hours per unit/run
+
+      const estLaborHours = hours > 0 ? hours : (basePerJob + perUnit * qty);
+      const laborCost = estLaborHours * rate;
+      const partsAtCost = materials;
+      const partsSell = partsAtCost * markup;
+      const driveCost = outside ? ((estLaborHours * driveFraction) * rate) + (miles * mileage) : 0;
+      const subtotal = laborCost + partsSell + driveCost;
+      const contingency = subtotal * 0.05; // 5% wiggle room
+      const totalLow = subtotal;
+      const totalHigh = subtotal + contingency;
+
+      const rows = [
+        ['Service', svc.charAt(0).toUpperCase()+svc.slice(1)],
+        ['Qty', qty],
+        ['Est. labor hours', estLaborHours.toFixed(2) + ` @ ${currency(rate)}/hr`],
+        ['Labor', currency(laborCost)],
+        ['Materials (at cost)', currency(partsAtCost)],
+        ['Materials (with markup)', currency(partsSell)],
+        ['Drive & mileage', outside ? currency(driveCost) : '$0.00'],
+        ['Subtotal', currency(subtotal)],
+        ['Estimated total (range)', `${currency(totalLow)} – ${currency(totalHigh)}`]
+      ];
+
+      const tbody = document.getElementById('tbl');
+      tbody.innerHTML = rows.map(r => `<tr><th scope="row">${r[0]}</th><td>${r[1]}</td></tr>`).join('');
+      document.getElementById('est-note').textContent = 'Final quote may vary after photos/site check. We’ll confirm before any work.';
+    }
+
+    document.getElementById('calc').addEventListener('click', calcEstimate);
+    document.getElementById('reset').addEventListener('click', () => {
+      ['qty','hours','materials','miles'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('svcType').value='retrofit';
+      document.getElementById('outside').value='no';
+      document.getElementById('tbl').innerHTML='';
+      document.getElementById('est-note').textContent='';
+    });
+
+    // Replace phone/email once you edit below
+    const PHONE = '+1XXXXXXXXXX'; // ← update to your SMS number
+    const EMAIL = 'contact@smartsparkinstallations.example'; // ← update to your inbox
+    document.getElementById('smsLink').href = `sms:${PHONE}?&body=${encodeURIComponent('Hi Smart Spark, I\'d like a quote for...')}`;
+    document.getElementById('emailLink').href = `mailto:${EMAIL}?subject=${encodeURIComponent('Quote Request')}&body=${encodeURIComponent('Hi Smart Spark, project details:')}`;
+  </script>
+</body>
+</html>
